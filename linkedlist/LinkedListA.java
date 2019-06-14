@@ -1,9 +1,33 @@
+/*********************************************
+ * @author Vikas Kumar
+ * @Email  itvika@gmail.com
+ * @Phone  9868366690
+ * @LinkedIn https://linkedin.com/in/itvika/
+ * This is a non-generic custom linked list implementation
+ * List of Functions
+ * 1.	void addFirst(T v)
+ * 2.	void add(T v)
+ * 3.	void addLast(T v)
+ * 4.	void removeFirst(T v)
+ * 5.	void removeLast(T v)
+ * 6.	void remove(T v)
+ * 7.	void removeAll()
+ * 8.	int size()
+ * 9.	T findMid()
+ * 10.	boolean contains(T v)
+ * 11.	LinkedListA<T> clone()
+ * 12.	void print()
+ * 13.	void add(int pos,T v)
+ */
+
 package linkedlist;
 
 public class LinkedListA<T> {
+	//Node class 
 	static class Node<T>{
 		T data;
 		Node<T> next;
+		//Constructor of Node class
 		public Node(T d){
 			this.data=d;
 			this.next=null;
@@ -11,10 +35,15 @@ public class LinkedListA<T> {
 		
 	}
 	
+	//Initialization of head of link list
 	Node<T> head;
+	
+	//LinkedListA Constructor
 	public LinkedListA(){
 		head=null;
 	}
+	
+	//Add element at beginning of the link list
 	public void addFirst(T v) {
 		Node<T> new_node=new Node<T>(v);
 		if(this.head==null) {
@@ -25,6 +54,8 @@ public class LinkedListA<T> {
 			this.head=new_node;
 		}
 	}
+	
+	//Add element at the end of the link list
 	public void add(T v) {
 		Node<T> new_node=new Node<T>(v);
 		if(this.head==null) {
@@ -38,6 +69,7 @@ public class LinkedListA<T> {
 		}
 		
 	}
+	//Add element at specified position in the link list
 	public void add(int pos,T v) {
 		if(pos==0) {
 			addFirst(v);
@@ -59,16 +91,23 @@ public class LinkedListA<T> {
 			current_node.next=new_node;
 		}
 	}
+	
+	//Add element at the end of the link list
 	public void addLast(T v) {
 		add(v);
 	}
 	
+	//Remove first element from the link list
 	public void removeFirst(T v) {
 		this.head=this.head.next;
 	}
+	
+	//Remove last element from the link list
 	public void removeLast(T v) {
 		this.remove(v);
 	}
+	
+	//Remove element by value from the link list
 	public void remove(T v) {
 		Node<T> current_node=this.head;
 		Node<T> prev_node=null;
@@ -88,11 +127,12 @@ public class LinkedListA<T> {
 		}
 	}
 	
-	
+	//Remove all elements of the link list
 	public void removeAll() {
 		this.head=null;
 		
 	}
+	//Get size of the link list
 	public int size() {
 		
 		int c=0;
@@ -110,6 +150,7 @@ public class LinkedListA<T> {
 		return c;
 	}
 	
+	//Find middle element of the link list
 	public T findMid() {
 		Node<T> fast_node=this.head;
 		Node<T> slow_node=this.head;
@@ -126,7 +167,8 @@ public class LinkedListA<T> {
 		}
 		return mid;
 	}
-
+	
+	//Check whether the link list contains a specific element
 	public boolean contains(T v) {
 		
 		if(this.head==null) {
@@ -143,6 +185,8 @@ public class LinkedListA<T> {
 		
 		return false;
 	}
+	
+	//Custom clone implementation
 	public LinkedListA<T> clone() {
 		LinkedListA<T> list_new=new LinkedListA<T>();
 		Node<T> current_node=this.head;
@@ -154,6 +198,7 @@ public class LinkedListA<T> {
 		return list_new;
 	}
 	
+	//Print each element of the list
 	public void print() {
 		Node<T> current_node=this.head;
 		while(current_node!=null) {

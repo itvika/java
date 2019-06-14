@@ -1,3 +1,17 @@
+/*********************************************
+ * @author Vikas Kumar
+ * @Email  itvika@gmail.com
+ * @Phone  9868366690
+ * @LinkedIn https://linkedin.com/in/itvika/
+ * This is a  custom linkedlist implementation
+ * List of Functions
+ * 1.	LinkedList insertList(LinkedList list,int data)
+ * 2.	LinkedList insertAfterKey(LinkedList list,int data,int key)
+ * 3.	LinkedList insertAtStart(LinkedList list,int data)
+ * 4.	void findMidElement(LinkedList list)
+ * 5.	LinkedList deleteByKey(LinkedList list,int key)
+ * 6.	void printList(LinkedList list)
+ */
 package linkedlist;
 public class LinkedList{
 	Node head;
