@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class LinkedListA<T> implements Cloneable {
+public class LinkedListA<T> {
 	static class Node<T>{
 		T data;
 		Node<T> next;
