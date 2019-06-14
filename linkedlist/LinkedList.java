@@ -100,17 +100,16 @@ public class LinkedList{
 		return list;
 	}
 	void findMidElement(LinkedList list) {
-		Node curr_node=list.head;
-		Node curr_node1=list.head;
-		while(curr_node.next!=null) {
-			curr_node1=curr_node1.next;
-			if(curr_node.next.next==null)
-				break;
-			curr_node=curr_node.next.next;
+		Node slow_ptr=list.head;
+		Node fast_ptr=list.head;
+		while(fast_ptr!=null && fast_ptr.next!=null) {
+			slow_ptr=slow_ptr.next;
+			
+			fast_ptr=fast_ptr.next.next;
 			
 		}
 		
-		System.out.println("Middle node is :"+curr_node1.data);
+		System.out.println("Middle node is :"+slow_ptr.data);
 	}
 	
 	void printList(LinkedList list) {
@@ -146,6 +145,7 @@ public class LinkedList{
 		//list=list.deleteByKey(list,20);
 		list.printList(list);
 		list.findMidElement(list);
+		
 		
 	}
 	

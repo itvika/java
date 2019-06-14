@@ -18,9 +18,20 @@
  * 11.	LinkedListA<T> clone()
  * 12.	void print()
  * 13.	void add(int pos,T v)
+ * 14.	int findLength => int findLengthRecursive(Node<T> h)
+ * 15.	T findNthNodeFromEnd(int N)
+ * 16.	boolean findLoop()
  */
 
 package linkedlist;
+
+/* below packages are only imported to print frequency of element in list*/
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class LinkedListA<T> {
 	//Node class 
@@ -155,16 +166,15 @@ public class LinkedListA<T> {
 		Node<T> fast_node=this.head;
 		Node<T> slow_node=this.head;
 		T mid=null;
-		while(slow_node.next!=null && fast_node.next.next!=null) {
+		while(fast_node!=null && fast_node.next!=null) {
 			//System.out.println("=====999");
-			mid=slow_node.next.data;
+			
 			slow_node=slow_node.next;
 			fast_node=fast_node.next.next;
 			
-			if(fast_node.next==null) {
-				break;
-			}
+			
 		}
+		mid=slow_node.data;
 		return mid;
 	}
 	
@@ -197,6 +207,72 @@ public class LinkedListA<T> {
 		
 		return list_new;
 	}
+	//Find Length of list
+	public int findLength() {
+		 return this.findLengthRecursive(this.head);
+		
+	}
+	//findLengthRecursive
+	public int findLengthRecursive(Node<T> h) {
+		
+		if(h==null) 
+			return 0;
+		
+		return 1+findLengthRecursive(h.next);
+		
+	}
+	public T findNthNode(int N) {
+		Node<T> current_node=this.head;
+		int c=1;
+		while(current_node!=null) {
+			if(c==N) {
+				return (T) current_node.data;
+			}
+			current_node=current_node.next;
+			c++;
+			
+		}
+		return null;
+	}
+	public T findNthNodeFromEnd(int N) {
+		
+		return findNthNode(this.size()+1-N);
+	}
+	public boolean findLoop() {
+		Node<T> current_node=this.head;
+		Set<Node> hs=new HashSet<Node>();
+		
+		while(current_node!=null) {
+			if(hs.contains(current_node))
+				return true;
+			
+			hs.add(current_node);
+			current_node=current_node.next;
+		}
+		return false;
+	}
+	public void countFreqOfElement() {
+		Node<T> current_node=this.head;
+		Map<T,Integer> hp=new HashMap<T,Integer>();
+		while(current_node!=null) {
+			if(hp.containsKey(current_node.data)) {
+				int f=hp.get(current_node.data);
+				f++;
+				hp.put(current_node.data,f);
+			}else {
+			hp.put(current_node.data, 1);
+			}	
+			
+			current_node=current_node.next;
+		}
+		Set set=hp.entrySet();//Converting to Set so that we can traverse  
+	    Iterator itr=set.iterator();  
+	    while(itr.hasNext()){  
+	        //Converting to Map.Entry so that we can get key and value separately  
+	        Map.Entry entry=(Map.Entry)itr.next();  
+	        System.out.println(entry.getKey()+" "+entry.getValue());  
+	    } 
+	}	
 	
 	//Print each element of the list
 	public void print() {
@@ -211,6 +287,7 @@ public class LinkedListA<T> {
 	
 	public static void main(String[] args) {
 		LinkedListA<Integer> list=new LinkedListA<Integer>();
+		list.add(5);
 		list.add(10);
 		list.add(20);
 		list.add(30);
@@ -229,9 +306,13 @@ public class LinkedListA<T> {
 		LinkedListA<Integer> list1=new LinkedListA<Integer>();
 		list1=list.clone();
 		list1.addLast(400);  
+		  
 		list1.print();
 		
 		System.out.println("===LIST1=====");
+		list.addLast(400);  
+		list.addLast(400);  
+		
 		list.print();
 		System.out.println(list.contains(2));
 		System.out.println(list.contains(40));
@@ -240,7 +321,13 @@ public class LinkedListA<T> {
 		System.out.println("=================");
 		
 		System.out.println(list.size());
-		System.out.println(list.findMid());
+		System.out.println("Mid:"+list.findMid());
+		System.out.println("Length of List:"+list.findLength());
+		System.out.println("Return Nth record:"+list.findNthNode(6));
+		System.out.println("Return Nth record from the end of the list:"+list.findNthNodeFromEnd(2));
+		System.out.println("Find Loop:"+list.findLoop());
+		list.countFreqOfElement();
+		
 		
 		
 
