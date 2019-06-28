@@ -6,6 +6,7 @@ package dynamicprogramming;
 	 * It is really a straight up fibonacci series with values
 	 * 1,2,3,5,8,13....
 	 * Look how we assign a[i] value of a[i-1] + b[i-1] and then b[i] becomes a[i]
+	 * 
 	 */
 	public class CountNumberOfBinaryWithoutConsecutive1s {
 

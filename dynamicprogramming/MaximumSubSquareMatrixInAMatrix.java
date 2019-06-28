@@ -28,6 +28,7 @@ Output is:
 1 2 2 3 1 
 0 0 0 0 0 
 Max sub array size:3
+
  */
 
 public class MaximumSubSquareMatrixInAMatrix {
