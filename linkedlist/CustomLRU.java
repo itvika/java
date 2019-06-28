@@ -43,7 +43,6 @@ Output is :
 6-600
 3-300
 7-700
-
  */
 
 import java.util.LinkedHashMap;
