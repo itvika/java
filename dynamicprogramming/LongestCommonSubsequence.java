@@ -6,6 +6,18 @@ package dynamicprogramming;
  * @Phone  9868366690
  * @LinkedIn https://linkedin.com/in/itvika/
 https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+Output:
+0 0 0 0 0 0 0 
+0 1 1 1 1 1 1 
+0 1 1 1 1 1 1 
+0 1 1 1 1 1 1 
+0 1 1 2 2 2 2 
+0 1 1 2 2 2 2 
+0 1 1 2 2 3 3 
+0 1 1 2 2 3 3 
+0 1 1 2 2 3 3 
+0 1 1 2 2 3 4 
+LCS:4
 
 */
 public class LongestCommonSubsequence {
